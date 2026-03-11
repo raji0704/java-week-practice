@@ -1,23 +1,29 @@
 import java.util.Scanner;
 
 public class Level3_Programs {
-
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        int[] numbers = new int[5];
-        int sum = 0;
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
 
-        System.out.println("Enter 5 numbers:");
+        int[] freq = new int[10];   // Array to store frequency of digits 0-9
 
-        for(int i = 0; i < 5; i++){
-            numbers[i] = input.nextInt();
-            sum = sum + numbers[i];
+        while (num > 0) {
+            int digit = num % 10;   // Get last digit
+            freq[digit]++;          // Increase frequency
+            num = num / 10;         // Remove last digit
         }
 
-        System.out.println("Sum = " + sum);
+        System.out.println("Frequency of digits:");
 
-        input.close();
+        for (int i = 0; i < 10; i++) {
+            if (freq[i] > 0) {
+                System.out.println(i + " : " + freq[i]);
+            }
+        }
+
+        sc.close();
     }
 }
